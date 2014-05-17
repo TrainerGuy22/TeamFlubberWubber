@@ -15,7 +15,7 @@ public class EntityStoneGolem extends EntityIronGolem implements IBossDisplayDat
 		super(par1World);
 		this.tasks.removeTask(new EntityAIAttackOnCollide(this, 1.0D, true));
 		EntityAIBase one = new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0D, true);
-		this.tasks.taskEntries.set(1, new EntityAITaskEntry(1, one));
+		this.tasks.addTask(1, one);
 	}
 	
 	@Override
