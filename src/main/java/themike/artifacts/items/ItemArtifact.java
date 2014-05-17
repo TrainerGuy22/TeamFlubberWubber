@@ -14,7 +14,7 @@ import net.minecraft.item.ItemStack;
 
 public class ItemArtifact extends Item {
 	
-	public static String[] colors = new String[]{"48D492"};
+	public static String[] colors = new String[]{"A3BBF4", "FF000", "1900FF", "00751D", "FFF700", "FFBB00", "FF00FF", "00FF22"};
 	
 	public ItemArtifact() {
 		super();
@@ -45,8 +45,8 @@ public class ItemArtifact extends Item {
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int getColorFromItemStack(ItemStack itemStack, int renderPass) {
-		return Integer.parseInt(colors[0]);
+	public int getColorFromItemStack(ItemStack stack, int renderPass) {
+		return Integer.parseInt(colors[stack.getItemDamage()], 16);
 	}
 
 }
