@@ -4,6 +4,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIBase;
+import net.minecraft.entity.ai.EntityAIDefendVillage;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAITasks.EntityAITaskEntry;
 import net.minecraft.entity.boss.IBossDisplayData;
@@ -21,6 +22,7 @@ public class EntityStoneGolem extends EntityIronGolem implements IBossDisplayDat
 		EntityAIBase one = new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0D, false);
 		this.tasks.addTask(1, one);
 		
+		this.targetTasks.removeTask(new EntityAIDefendVillage(this));
 		this.targetTasks.removeTask(new EntityAINearestAttackableTarget(this, EntityLiving.class, 0, false, true, IMob.mobSelector));
 		this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 	}
