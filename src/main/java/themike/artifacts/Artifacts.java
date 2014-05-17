@@ -1,5 +1,6 @@
 package themike.artifacts;
 
+import net.minecraft.creativetab.CreativeTabs;
 import themike.artifacts.common.CommonProxy;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -10,7 +11,9 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 public class Artifacts {
 	
 	@SidedProxy(clientSide = "themike.artifacts.client.ClientProxy", serverSide = "themike.artifacts.common.CommonProxy")
-	public CommonProxy proxy;
+	public static CommonProxy proxy;
+	
+	public static CreativeTabs creative_tab = new ArtifactsTab(); 
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
