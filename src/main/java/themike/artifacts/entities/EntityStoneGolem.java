@@ -2,6 +2,8 @@ package themike.artifacts.entities;
 
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
+import net.minecraft.entity.ai.EntityAIBase;
+import net.minecraft.entity.ai.EntityAITasks.EntityAITaskEntry;
 import net.minecraft.entity.boss.IBossDisplayData;
 import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,7 +13,9 @@ public class EntityStoneGolem extends EntityIronGolem implements IBossDisplayDat
 
 	public EntityStoneGolem(World par1World) {
 		super(par1World);
-		this.tasks.taskEntries.set(1, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0D, true));
+		this.tasks.removeTask(new EntityAIAttackOnCollide(this, 1.0D, true));
+		EntityAIBase one = new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0D, true);
+		this.tasks.taskEntries.set(1, new EntityAITaskEntry(1, one));
 	}
 	
 	@Override
