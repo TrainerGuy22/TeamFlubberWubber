@@ -30,10 +30,12 @@ public class BlockDisplayGlass extends BlockGlass {
 	}
 	
 	@Override
-	public void onBlockClicked(World world, int x, int y, int z, EntityPlayer player) {
+	@SideOnly(Side.SERVER)
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_) {
 		EntityStoneGolem golem = new EntityStoneGolem(world);
 		golem.setPosition(x, y + 1, z);
 		world.spawnEntityInWorld(golem);
+		return false;
 	}
 
 }
