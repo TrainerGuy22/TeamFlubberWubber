@@ -9,15 +9,17 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockGlass;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class BlockDisplayGlass extends BlockGlass {
+public class BlockDisplayGlass extends BlockGlass implements ITileEntityProvider {
 
 	public BlockDisplayGlass() {
 		super(Material.ice, false);
@@ -26,6 +28,7 @@ public class BlockDisplayGlass extends BlockGlass {
 		this.setCreativeTab(Artifacts.creative_tab);
 		this.setBlockName("display_glass");
 		GameRegistry.registerBlock(this, "display_glass");
+		this.isBlockContainer = true;
 	}
 	
 	@Override
@@ -35,7 +38,14 @@ public class BlockDisplayGlass extends BlockGlass {
 	}
 	
 	@Override
+	public int onBlockPlaced(World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ, int metadata) {
+		((TileDisplayGlass) world.getTileEntity(x,  y, z)).artifactMetadata = world.rand.nextInt(8);
+		return super.onBlockPlaced(world, x, y, z, side, hitX, hitY, hitZ, metadata);
+	}
+	
+	@Override
 	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int meta) {
+		super.onBlockDestroyedByPlayer(world, x, y, z, meta);
 		this.dropBlockAsItem(world, x, y, z, new ItemStack(CommonProxy.artifact, 1, ((TileDisplayGlass) world.getTileEntity(x,  y, z)).blockMetadata));
 	}
 	
@@ -51,5 +61,16 @@ public class BlockDisplayGlass extends BlockGlass {
 		world.spawnEntityInWorld(golem);
 		return false;
 	}
+
+	@Override
+	public TileEntity createNewTileEntity(World var1, int var2) {
+		return new TileDisplayGlass();
+	}
+	
+	@Override
+    public void breakBlock(World world, int x, int y, int z, Block block, int dunno) {
+        super.breakBlock(world, x, y, z, block, dunno);
+        world.removeTileEntity(x, y, z);
+    }
 
 }
