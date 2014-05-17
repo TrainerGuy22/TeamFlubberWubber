@@ -3,6 +3,8 @@ package themike.artifacts.items;
 import java.util.List;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import themike.artifacts.Artifacts;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -11,6 +13,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class ItemArtifact extends Item {
+	
+	public static String[] colors = new String[]{"48D492"};
 	
 	public ItemArtifact() {
 		super();
@@ -37,6 +41,12 @@ public class ItemArtifact extends Item {
 		for(int count = 0; count < 8; count++) {
 			subItems.add(new ItemStack(item, 1, count));
 		}
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public int getColorFromItemStack(ItemStack itemStack, int renderPass) {
+		return Integer.parseInt(colors[0]);
 	}
 
 }
