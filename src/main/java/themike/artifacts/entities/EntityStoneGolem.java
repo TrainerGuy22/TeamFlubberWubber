@@ -28,7 +28,7 @@ public class EntityStoneGolem extends EntityIronGolem implements IBossDisplayDat
 	@Override
     protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(150.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(125.0D);
 	}
 
 }

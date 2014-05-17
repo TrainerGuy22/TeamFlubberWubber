@@ -9,6 +9,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockGlass;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
@@ -26,14 +28,17 @@ public class BlockDisplayGlass extends BlockGlass {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister renderer) {
-		this.blockIcon = renderer.registerIcon("glass");
+		this.blockIcon = renderer.registerIcon("artifacts:display_glass");
 	}
 	
 	@Override
-	@SideOnly(Side.SERVER)
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_) {
+		if(world.isRemote)
+			return true;
+		
 		EntityStoneGolem golem = new EntityStoneGolem(world);
-		golem.setPosition(x, y + 1, z);
+		golem.setLocationAndAngles(x, y + 1, z, 0.0f, 0.0f);
+		((EntityLiving) golem).onSpawnWithEgg((IEntityLivingData) null);
 		world.spawnEntityInWorld(golem);
 		return false;
 	}
