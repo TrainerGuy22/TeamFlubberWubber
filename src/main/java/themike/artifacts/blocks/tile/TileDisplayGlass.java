@@ -3,6 +3,7 @@ package themike.artifacts.blocks.tile;
 import java.util.List;
 
 import themike.artifacts.entities.EntityStoneGolem;
+import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
@@ -23,6 +24,10 @@ public class TileDisplayGlass extends TileEntity {
 			
 			AxisAlignedBB range = AxisAlignedBB.getBoundingBox(x - 3, y - 1, z - 5, x + 6, y + 5, z + 4);
 			List<EntityStoneGolem> golems = this.worldObj.getEntitiesWithinAABB(EntityStoneGolem.class, range);
+			if(golems == null) {
+				isActivated = false;
+				onBreak();
+			}
 		}
 	}
 	
@@ -31,7 +36,8 @@ public class TileDisplayGlass extends TileEntity {
 	}
 	
 	public void onBreak() {
-		
+		this.blockType.onBlockDestroyedByPlayer(worldObj, xCoord, yCoord, zCoord, this.blockMetadata);
+		this.worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.air);
 	}
 	
 	@Override
