@@ -61,8 +61,8 @@ public class WorldGenArtifactDungeon implements IWorldGenerator {
 					for(int countY = y - 1; countY != y + 4; countY++) {
 						world.setBlock(countX, countY, countZ, Blocks.air);
 					}
-					world.setBlock(countX, y - 2, countZ, Blocks.stonebrick);
-					world.setBlock(countX, y + 4, countZ, Blocks.stonebrick);
+					world.setBlock(countX, y - 2, countZ, CommonProxy.fake_stone, random.nextInt(3), 3);
+					world.setBlock(countX, y + 4, countZ, CommonProxy.fake_stone, random.nextInt(3), 3);
 				}
 			}
 			
@@ -78,27 +78,27 @@ public class WorldGenArtifactDungeon implements IWorldGenerator {
 			
 			for(int countZ = z - 3; countZ != z + 4; countZ++) {
 				for(int countY = y - 1; countY != y + 4; countY++) {
-					world.setBlock(x - 4, countY, countZ, Blocks.stonebrick);
-					world.setBlock(x + 6, countY, countZ, Blocks.stonebrick);
+					world.setBlock(x - 4, countY, countZ, CommonProxy.fake_stone, random.nextInt(3), 3);
+					world.setBlock(x + 6, countY, countZ, CommonProxy.fake_stone, random.nextInt(3), 3);
 				}
 			}
 			
 			for(int countX = x - 3; countX != x + 6; countX++) {
 				for(int countY = y - 1; countY != y + 4; countY++) {
-					world.setBlock(countX, countY, z - 4, Blocks.stonebrick);
-					world.setBlock(countX, countY, z + 4, Blocks.stonebrick);
+					world.setBlock(countX, countY, z - 4, CommonProxy.fake_stone, random.nextInt(3), 3);
+					world.setBlock(countX, countY, z + 4, CommonProxy.fake_stone, random.nextInt(3), 3);
 				}
 			}
 			
 			world.setBlock(x + 7, y, z, Blocks.glowstone, 0, 1);
-			world.setBlock(x + 7, y + 1, z, Blocks.stonebrick);
+			world.setBlock(x + 7, y + 1, z, CommonProxy.fake_stone, random.nextInt(3), 3);
 			world.setBlock(x + 7, y - 1, z, Blocks.glowstone, 0, 1);
 			
-			world.setBlock(x + 7, y, z - 1, Blocks.stonebrick);
-			world.setBlock(x + 7, y - 1, z - 1, Blocks.stonebrick);
+			world.setBlock(x + 7, y, z - 1, CommonProxy.fake_stone, random.nextInt(3), 3);
+			world.setBlock(x + 7, y - 1, z - 1, CommonProxy.fake_stone, random.nextInt(3), 3);
 			
-			world.setBlock(x + 7, y, z + 1, Blocks.stonebrick);
-			world.setBlock(x + 7, y - 1, z + 1, Blocks.stonebrick);
+			world.setBlock(x + 7, y, z + 1, CommonProxy.fake_stone, random.nextInt(3), 3);
+			world.setBlock(x + 7, y - 1, z + 1, CommonProxy.fake_stone, random.nextInt(3), 3);
 			
 			
 			// For debugging. This shouldn't be in the release build.

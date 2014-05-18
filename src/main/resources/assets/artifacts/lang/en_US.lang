@@ -1,4 +1,5 @@
 itemGroup.artifacts=Artifacts
 item.artifact.name=Artifact
-tile.displayGlass.name=Display Glass
+tile.display_glass.name=Display Glass
+tile.fake_stone.name=Dungeon Stone
 entity.artifacts.StoneGolem.name=Stone Golem

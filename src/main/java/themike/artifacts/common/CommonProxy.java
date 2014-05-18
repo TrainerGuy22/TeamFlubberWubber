@@ -8,6 +8,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import themike.artifacts.Artifacts;
 import themike.artifacts.blocks.BlockDisplayGlass;
+import themike.artifacts.blocks.BlockFakeStone;
 import themike.artifacts.blocks.tile.TileDisplayGlass;
 import themike.artifacts.entities.EntityStoneGolem;
 import themike.artifacts.items.ItemArtifact;
@@ -23,12 +24,14 @@ public class CommonProxy {
 	
 	public static Item artifact;
 	public static Block display_glass;
+	public static Block fake_stone;
 	
 	public static ArtifactDungeonSaveData dungeon_world_data;
 	
 	public void init() {
 		artifact = new ItemArtifact();
 		display_glass = new BlockDisplayGlass();
+		fake_stone = new BlockFakeStone();
 		EntityRegistry.registerModEntity(EntityStoneGolem.class, "StoneGolem", 0, Artifacts.instance, 80, 3, false);
 		GameRegistry.registerTileEntity(TileDisplayGlass.class, "display_glass");
 		MinecraftForge.EVENT_BUS.register(this);
