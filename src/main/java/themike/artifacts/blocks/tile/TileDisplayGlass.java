@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 
 public class TileDisplayGlass extends TileEntity {
 	
-	public int artifactMetadata = 2;
+	public int artifactMetadata;
 	public boolean isActivated;
 	public int cooldown = 0;
 	

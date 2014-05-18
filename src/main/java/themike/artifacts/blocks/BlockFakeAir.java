@@ -21,8 +21,13 @@ public class BlockFakeAir extends Block {
 	
 	@Override
 	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB mask, List list, Entity entity) {
-		if(entity instanceof EntityLiving && x < ((EntityLiving) entity).posX)
+		if(entity instanceof EntityLiving && x > ((EntityLiving) entity).posX)
 			super.addCollisionBoxesToList(world, x, y, z, mask, list, entity);
 	}
+	
+	@Override
+    public int getRenderType() {
+        return -1;
+    }
 	
 }
