@@ -33,7 +33,7 @@ public class TileDisplayGlass extends TileEntity {
 			int y = this.yCoord;
 			int z = this.zCoord;
 			
-			AxisAlignedBB range = AxisAlignedBB.getBoundingBox(x - 3, y - 1, z - 3, x + 7, y + 4, z + 4);
+			AxisAlignedBB range = AxisAlignedBB.getBoundingBox(x - 4, y - 2, z - 4, x + 8, y + 5, z + 5);
 			List<EntityStoneGolem> golems = this.worldObj.getEntitiesWithinAABB(EntityStoneGolem.class, range);
 			if(golems.size() == 0) {
 				isActivated = false;
@@ -135,6 +135,20 @@ public class TileDisplayGlass extends TileEntity {
 		worldObj.setBlock(x - 4, y - 1, z - 1, Blocks.air);
 		worldObj.setBlock(x - 4, y, z + 1, Blocks.air);
 		worldObj.setBlock(x - 4, y - 1, z + 1, Blocks.air);
+		
+		worldObj.setBlock(xCoord + 6, yCoord, zCoord, Blocks.air);
+		worldObj.setBlock(xCoord + 6, yCoord + 1, zCoord, Blocks.air);
+		worldObj.setBlock(xCoord + 6, yCoord - 1, zCoord, Blocks.air);
+		
+		worldObj.setBlock(xCoord + 6, yCoord, zCoord - 1, Blocks.air);
+		worldObj.setBlock(xCoord + 6, yCoord - 1, zCoord - 1, Blocks.air);
+		
+		worldObj.setBlock(xCoord + 6, yCoord, zCoord + 1, Blocks.air);
+		worldObj.setBlock(xCoord + 6, yCoord - 1, zCoord + 1, Blocks.air);
+		
+		replaceBlock(x + 6, y - 2, z + 1, Blocks.stonebrick);
+		replaceBlock(x + 6, y - 2, z, Blocks.stonebrick);
+		replaceBlock(x + 6, y - 2, z - 1, Blocks.stonebrick);
 	}
 	
 	@Override

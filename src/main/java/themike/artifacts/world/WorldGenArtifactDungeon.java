@@ -100,6 +100,10 @@ public class WorldGenArtifactDungeon implements IWorldGenerator {
 			world.setBlock(x + 7, y, z + 1, CommonProxy.fake_stone, random.nextInt(3), 3);
 			world.setBlock(x + 7, y - 1, z + 1, CommonProxy.fake_stone, random.nextInt(3), 3);
 			
+			world.setBlock(x + 6, y - 2, z + 1, CommonProxy.fake_stone, random.nextInt(3), 3);
+			world.setBlock(x + 6, y - 2, z, CommonProxy.fake_stone, random.nextInt(3), 3);
+			world.setBlock(x + 6, y - 2, z - 1, CommonProxy.fake_stone, random.nextInt(3), 3);
+			
 			
 			world.setBlock(x - 4, y, z, Blocks.air);
 			world.setBlock(x - 4, y + 1, z, Blocks.air);
