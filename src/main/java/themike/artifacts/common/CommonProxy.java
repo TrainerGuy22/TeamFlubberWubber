@@ -13,6 +13,7 @@ import themike.artifacts.blocks.BlockFakeStone;
 import themike.artifacts.blocks.tile.TileDisplayGlass;
 import themike.artifacts.entities.EntityStoneGolem;
 import themike.artifacts.items.ItemArtifact;
+import themike.artifacts.items.ItemShimmeringStar;
 import themike.artifacts.world.ArtifactDungeonSaveData;
 import themike.artifacts.world.WorldGenArtifactDungeon;
 import net.minecraft.block.Block;
@@ -24,6 +25,8 @@ import net.minecraftforge.event.world.WorldEvent;
 public class CommonProxy {
 	
 	public static Item artifact;
+	public static Item shimmering_star;
+	
 	public static Block display_glass;
 	public static Block fake_stone;
 	public static Block fake_air;
@@ -32,9 +35,12 @@ public class CommonProxy {
 	
 	public void init() {
 		artifact = new ItemArtifact();
+		shimmering_star = new ItemShimmeringStar();
+		
 		display_glass = new BlockDisplayGlass();
 		fake_stone = new BlockFakeStone();
 		fake_air = new BlockFakeAir();
+		
 		EntityRegistry.registerModEntity(EntityStoneGolem.class, "StoneGolem", 0, Artifacts.instance, 80, 3, false);
 		GameRegistry.registerTileEntity(TileDisplayGlass.class, "display_glass");
 		

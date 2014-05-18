@@ -1,5 +1,6 @@
 itemGroup.artifacts=Artifacts
 item.artifact.name=Artifact
+item.shimmering_star.name=Shimmering Star
 tile.display_glass.name=Display Glass
 tile.fake_stone.name=Dungeon Stone
 entity.artifacts.StoneGolem.name=Stone Golem

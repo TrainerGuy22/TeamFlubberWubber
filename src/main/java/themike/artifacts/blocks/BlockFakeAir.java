@@ -3,6 +3,8 @@ package themike.artifacts.blocks;
 import java.util.List;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -26,11 +28,13 @@ public class BlockFakeAir extends Block {
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
     public boolean isOpaqueCube() {
         return false;
     }
 	
 	@Override
+	@SideOnly(Side.CLIENT)
     public int getRenderType() {
         return -1;
     }

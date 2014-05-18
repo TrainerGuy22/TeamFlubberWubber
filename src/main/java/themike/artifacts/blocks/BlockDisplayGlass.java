@@ -46,6 +46,13 @@ public class BlockDisplayGlass extends BlockContainer {
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
+    public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side) {
+		return true;
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
     public boolean isOpaqueCube() {
         return false;
     }
