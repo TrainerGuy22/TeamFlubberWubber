@@ -71,28 +71,28 @@ public class WorldGenArtifactDungeon implements IWorldGenerator {
 			
 			world.setBlock(x, y - 1, z, Blocks.quartz_block, 2, 3);
 			
-			world.setBlock(x - 1, y - 2, z - 1, Blocks.glowstone);
-			world.setBlock(x - 1, y - 2, z + 1, Blocks.glowstone);
-			world.setBlock(x + 1, y - 2, z - 1, Blocks.glowstone);
-			world.setBlock(x + 1, y - 2, z + 1, Blocks.glowstone);
+			world.setBlock(x - 1, y - 2, z - 1, Blocks.glowstone, 0, 1);
+			world.setBlock(x - 1, y - 2, z + 1, Blocks.glowstone, 0, 1);
+			world.setBlock(x + 1, y - 2, z - 1, Blocks.glowstone, 0, 1);
+			world.setBlock(x + 1, y - 2, z + 1, Blocks.glowstone, 0, 1);
 			
 			for(int countZ = z - 3; countZ != z + 4; countZ++) {
-				for(int countY = y - 1; countY != y + 3; countY++) {
+				for(int countY = y - 1; countY != y + 4; countY++) {
 					world.setBlock(x - 4, countY, countZ, Blocks.stonebrick);
 					world.setBlock(x + 6, countY, countZ, Blocks.stonebrick);
 				}
 			}
 			
 			for(int countX = x - 3; countX != x + 6; countX++) {
-				for(int countY = y - 1; countY != y + 3; countY++) {
+				for(int countY = y - 1; countY != y + 4; countY++) {
 					world.setBlock(countX, countY, z - 4, Blocks.stonebrick);
 					world.setBlock(countX, countY, z + 4, Blocks.stonebrick);
 				}
 			}
 			
-			world.setBlock(x + 7, y, z, Blocks.glowstone);
+			world.setBlock(x + 7, y, z, Blocks.glowstone, 0, 1);
 			world.setBlock(x + 7, y + 1, z, Blocks.stonebrick);
-			world.setBlock(x + 7, y - 1, z, Blocks.glowstone);
+			world.setBlock(x + 7, y - 1, z, Blocks.glowstone, 0, 1);
 			
 			world.setBlock(x + 7, y, z - 1, Blocks.stonebrick);
 			world.setBlock(x + 7, y - 1, z - 1, Blocks.stonebrick);
