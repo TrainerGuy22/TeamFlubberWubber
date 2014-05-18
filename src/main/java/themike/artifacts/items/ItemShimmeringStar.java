@@ -59,9 +59,9 @@ public class ItemShimmeringStar extends Item {
 		}
 		if(stack.getTagCompound().getInteger("cooldown") == 0) {
 			for(Potion potion : potions) {
-				player.addPotionEffect(new PotionEffect(potion.id, 480));
+				player.addPotionEffect(new PotionEffect(potion.id, 120, 1));
 			}
-			stack.getTagCompound().setInteger("cooldown", 480);
+			stack.getTagCompound().setInteger("cooldown", 119);
 		}
 	}
 
