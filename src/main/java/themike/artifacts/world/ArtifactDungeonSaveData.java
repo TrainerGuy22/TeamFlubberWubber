@@ -5,20 +5,24 @@ import net.minecraft.world.WorldSavedData;
 
 public class ArtifactDungeonSaveData extends WorldSavedData {
 	
-	public static Integer[] artifacts = new Integer[8];
+	public Integer[] artifacts = new Integer[8];
 
-	public ArtifactDungeonSaveData(String par1Str) {
+	public ArtifactDungeonSaveData() {
 		super("artifact_dungeon");
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
-		
+		for(int count = 0; count != artifacts.length; count++) {
+			artifacts[count] = tag.getInteger("artifact" + count);
+		}
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound tag) {
-		
+		for(int count = 0; count != artifacts.length; count++) {
+			tag.setInteger("artifact" + count, artifacts[count]);
+		}
 	}
 
 }
