@@ -14,5 +14,10 @@ public class MaterialFakeAir extends Material {
 	public boolean isReplaceable() {
 		return false;
 	}
+	
+	@Override
+    public boolean blocksMovement() {
+        return false;
+    }
 
 }
