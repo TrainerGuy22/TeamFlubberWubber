@@ -19,12 +19,10 @@ import net.minecraft.world.World;
 
 public class ItemShimmeringStar extends Item {
 	
-	private PotionEffect[] potions = new PotionEffect[]{
+	private Potion[] potions = new Potion[]{
 		Potion.moveSpeed,
-		Potion.heal,
 		Potion.damageBoost,
-		Potion.jump,
-		Potion.nightVision
+		Potion.jump
 	};
 	
 	public ItemShimmeringStar() {
@@ -52,16 +50,18 @@ public class ItemShimmeringStar extends Item {
     public void onUpdate(ItemStack stack, World world, Entity entity, int whocares1, boolean whocares2) {
 		if(!(entity instanceof EntityPlayer))
 			return;
+		EntityPlayer player = (EntityPlayer) entity;
 		if(stack.getTagCompound() == null) {
 			stack.setTagCompound(new NBTTagCompound());
-			stack.getTagCompound().setInteger("cooldown", -);
+			stack.getTagCompound().setInteger("cooldown", 0);
 		} else {
 			stack.getTagCompound().setInteger("cooldown", stack.getTagCompound().getInteger("cooldown") - 1);
 		}
 		if(stack.getTagCompound().getInteger("cooldown") == 0) {
 			for(Potion potion : potions) {
+				player.addPotionEffect(new PotionEffect(potion.id, 480));
 			}
-			stack.getTagCompound().setInteger("cooldown", 6);
+			stack.getTagCompound().setInteger("cooldown", 480);
 		}
 	}
 
