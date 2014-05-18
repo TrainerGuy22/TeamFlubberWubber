@@ -38,7 +38,10 @@ public class WorldGenArtifactDungeon implements IWorldGenerator {
 	}
 
 	@Override
-	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider generator, IChunkProvider provider) {
+	public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkProvider generator, IChunkProvider provider) {
+		// Stupid not random Random.
+		Random random = new Random();
+		
 		if(world.provider.dimensionId != 0) {
 			return;
 		}
@@ -57,7 +60,7 @@ public class WorldGenArtifactDungeon implements IWorldGenerator {
 			CommonProxy.dungeon_world_data.artifacts[artifactMetadata] = 1;
 			
 			for(int countX = x - 3; countX != x + 6; countX++) {
-				for(int countZ = z - 3; countZ != z + 3; countZ++) {
+				for(int countZ = z - 3; countZ != z + 4; countZ++) {
 					for(int countY = y - 1; countY != y + 4; countY++) {
 						world.setBlock(countX, countY, countZ, Blocks.air);
 					}

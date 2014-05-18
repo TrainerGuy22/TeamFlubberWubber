@@ -47,8 +47,11 @@ public class CommonProxy {
 		ArtifactDungeonSaveData data = (ArtifactDungeonSaveData) world.mapStorage.loadData(ArtifactDungeonSaveData.class, "artifact_dungeon");
 		
 		if(data == null) {
+			System.out.print("Creating new save data, artifact dungeon.");
 			data = new ArtifactDungeonSaveData();
 			world.mapStorage.setData("artifact_dungeon", data);
+		} else {
+			System.out.print("Found preexisting artifact dungeon.");
 		}
 		
 		dungeon_world_data = data;
