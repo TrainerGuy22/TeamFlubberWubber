@@ -20,7 +20,6 @@ public class TileDisplayGlass extends TileEntity {
 	public int cooldown = 0;
 	
 	public TileDisplayGlass() {
-		
 	}
 	
 	public void updateEntity() {
