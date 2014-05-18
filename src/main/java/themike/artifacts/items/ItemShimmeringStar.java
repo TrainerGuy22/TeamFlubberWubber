@@ -7,6 +7,7 @@ import themike.artifacts.common.CommonProxy;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -22,7 +23,8 @@ public class ItemShimmeringStar extends Item {
 	private Potion[] potions = new Potion[]{
 		Potion.moveSpeed,
 		Potion.damageBoost,
-		Potion.jump
+		Potion.jump,
+		Potion.resistance
 	};
 	
 	public ItemShimmeringStar() {
@@ -47,6 +49,12 @@ public class ItemShimmeringStar extends Item {
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IIconRegister renderer) {
+		this.itemIcon = renderer.registerIcon("artifacts:shimmering_star");
+	}
+	
+	@Override
     public void onUpdate(ItemStack stack, World world, Entity entity, int whocares1, boolean whocares2) {
 		if(!(entity instanceof EntityPlayer))
 			return;
@@ -59,7 +67,7 @@ public class ItemShimmeringStar extends Item {
 		}
 		if(stack.getTagCompound().getInteger("cooldown") == 0) {
 			for(Potion potion : potions) {
-				player.addPotionEffect(new PotionEffect(potion.id, 120, 1));
+				player.addPotionEffect(new PotionEffect(potion.id, 120, 2));
 			}
 			stack.getTagCompound().setInteger("cooldown", 119);
 		}
