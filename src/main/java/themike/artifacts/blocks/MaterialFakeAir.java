@@ -8,5 +8,10 @@ public class MaterialFakeAir extends MaterialTransparent {
 	public MaterialFakeAir() {
 		super(MapColor.airColor);
 	}
+	
+	@Override
+	public boolean isReplaceable() {
+		return false;
+	}
 
 }

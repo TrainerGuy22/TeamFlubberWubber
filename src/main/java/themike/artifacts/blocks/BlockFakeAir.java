@@ -7,7 +7,7 @@ import net.minecraft.block.material.Material;
 public class BlockFakeAir extends Block {
 
 	public BlockFakeAir() {
-		super(Material.air);
+		super(new MaterialFakeAir());
 		this.setBlockUnbreakable();
 		this.setResistance(-1);
 		GameRegistry.registerBlock(this, "fake_air");	

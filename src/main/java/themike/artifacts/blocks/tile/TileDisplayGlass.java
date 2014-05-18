@@ -55,6 +55,18 @@ public class TileDisplayGlass extends TileEntity {
 			worldObj.setBlock(xCoord + 6, yCoord, zCoord + 1, Blocks.air);
 			worldObj.setBlock(xCoord + 6, yCoord - 1, zCoord + 1, Blocks.air);
 			
+			int x = xCoord;
+			int y = yCoord;
+			int z = zCoord;
+			
+			worldObj.setBlock(x + 7, y, z, CommonProxy.fake_air);
+			worldObj.setBlock(x + 7, y + 1, z, CommonProxy.fake_air);
+			worldObj.setBlock(x + 7, y - 1, z, CommonProxy.fake_air);
+			worldObj.setBlock(x + 7, y, z - 1, CommonProxy.fake_air);
+			worldObj.setBlock(x + 7, y - 1, z - 1, CommonProxy.fake_air);
+			worldObj.setBlock(x + 7, y, z + 1, CommonProxy.fake_air);
+			worldObj.setBlock(x + 7, y - 1, z + 1, CommonProxy.fake_air);
+			
 			EntityStoneGolem golem = new EntityStoneGolem(worldObj);
 			golem.setLocationAndAngles(xCoord + 5, yCoord - 1, zCoord, 0.0f, 0.0f);
 			((EntityLiving) golem).onSpawnWithEgg((IEntityLivingData) null);
@@ -87,12 +99,10 @@ public class TileDisplayGlass extends TileEntity {
 			}
 		}		
 		
-		/*
 		worldObj.setBlock(x - 1, y - 2, z - 1, Blocks.glowstone, 0, 1);
 		worldObj.setBlock(x - 1, y - 2, z + 1, Blocks.glowstone, 0, 1);
 		worldObj.setBlock(x + 1, y - 2, z - 1, Blocks.glowstone, 0, 1);
 		worldObj.setBlock(x + 1, y - 2, z + 1, Blocks.glowstone, 0, 1);
-		*/
 		
 		for(int countZ = z - 3; countZ != z + 4; countZ++) {
 			for(int countY = y - 1; countY != y + 4; countY++) {
@@ -108,9 +118,9 @@ public class TileDisplayGlass extends TileEntity {
 			}
 		}
 		
-		// worldObj.setBlock(x + 7, y, z, Blocks.glowstone, 0, 1);
+		worldObj.setBlock(x + 7, y, z, Blocks.glowstone, 0, 1);
 		replaceBlock(x + 7, y + 1, z, Blocks.stonebrick);
-		// worldObj.setBlock(x + 7, y - 1, z, Blocks.glowstone, 0, 1);
+		worldObj.setBlock(x + 7, y - 1, z, Blocks.glowstone, 0, 1);
 		
 		replaceBlock(x + 7, y, z - 1, Blocks.stonebrick);
 		replaceBlock(x + 7, y - 1, z - 1, Blocks.stonebrick);

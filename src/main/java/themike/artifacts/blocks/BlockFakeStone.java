@@ -8,6 +8,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
 
 public class BlockFakeStone extends Block {
 	
@@ -19,8 +20,18 @@ public class BlockFakeStone extends Block {
 		GameRegistry.registerBlock(this, "fake_stone");
 	}
 	
+	public int getLightValue(IBlockAccess world, int x, int y, int z) {
+		if(world.getBlockMetadata(x, y, z) == 3) 
+			return 15;
+		else
+			return 0;
+	}
+	
 	public IIcon getIcon(int side, int meta) {
-		return Blocks.stonebrick.getIcon(side, meta);
+		if(meta == 3)
+			return Blocks.glowstone.getIcon(side, meta);
+		else
+			return Blocks.stonebrick.getIcon(side, meta);
 	}
 
 }

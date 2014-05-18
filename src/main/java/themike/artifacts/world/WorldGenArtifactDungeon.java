@@ -71,10 +71,10 @@ public class WorldGenArtifactDungeon implements IWorldGenerator {
 			
 			world.setBlock(x, y - 1, z, Blocks.quartz_block, 2, 3);
 			
-			world.setBlock(x - 1, y - 2, z - 1, Blocks.glowstone, 0, 1);
-			world.setBlock(x - 1, y - 2, z + 1, Blocks.glowstone, 0, 1);
-			world.setBlock(x + 1, y - 2, z - 1, Blocks.glowstone, 0, 1);
-			world.setBlock(x + 1, y - 2, z + 1, Blocks.glowstone, 0, 1);
+			world.setBlock(x - 1, y - 2, z - 1, CommonProxy.fake_stone, 3, 1);
+			world.setBlock(x - 1, y - 2, z + 1, CommonProxy.fake_stone, 3, 1);
+			world.setBlock(x + 1, y - 2, z - 1, CommonProxy.fake_stone, 3, 1);
+			world.setBlock(x + 1, y - 2, z + 1, CommonProxy.fake_stone, 3, 1);
 			
 			for(int countZ = z - 3; countZ != z + 4; countZ++) {
 				for(int countY = y - 1; countY != y + 4; countY++) {
@@ -90,9 +90,9 @@ public class WorldGenArtifactDungeon implements IWorldGenerator {
 				}
 			}
 			
-			world.setBlock(x + 7, y, z, Blocks.glowstone, 0, 1);
+			world.setBlock(x + 7, y, z, CommonProxy.fake_stone, 3, 1);
 			world.setBlock(x + 7, y + 1, z, CommonProxy.fake_stone, random.nextInt(3), 3);
-			world.setBlock(x + 7, y - 1, z, Blocks.glowstone, 0, 1);
+			world.setBlock(x + 7, y - 1, z, CommonProxy.fake_stone, 3, 1);
 			
 			world.setBlock(x + 7, y, z - 1, CommonProxy.fake_stone, random.nextInt(3), 3);
 			world.setBlock(x + 7, y - 1, z - 1, CommonProxy.fake_stone, random.nextInt(3), 3);
