@@ -13,7 +13,7 @@ import cpw.mods.fml.common.IWorldGenerator;
 
 public class WorldGenArtifactDungeon implements IWorldGenerator {
 	
-	public int artifactMetadata = 0;
+	public int artifactMetadata;
 	
 	public WorldGenArtifactDungeon(int artifactMetadata) {
 		this.artifactMetadata = artifactMetadata;
