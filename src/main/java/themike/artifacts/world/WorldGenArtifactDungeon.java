@@ -20,6 +20,9 @@ public class WorldGenArtifactDungeon implements IWorldGenerator {
 	}
 	
 	public boolean canSpawn(World world, int x, int y, int z) {
+		if(CommonProxy.dungeon_world_data == null) {
+			CommonProxy.dungeon_world_data = CommonProxy.loadWorldSaveData(world);
+		}
 		if(CommonProxy.dungeon_world_data.artifacts[artifactMetadata] == 1)
 			return false;
 		if(world.getBlock(x + 6, y - 2, z - 3).isAir(world, x + 6, y - 2, z - 3) ||
@@ -49,11 +52,7 @@ public class WorldGenArtifactDungeon implements IWorldGenerator {
 		int x = chunkX * 16 + random.nextInt(16);
 		int z = chunkZ * 16 + random.nextInt(16);
 		int y = 10 + random.nextInt(7);
-
-		Coord2 spawn = new Coord2(spawnCoords.posX, spawnCoords.posZ);
-		Coord2 chunk = new Coord2(chunkX * 16, chunkZ * 16);
 		
-		// if(spawn.distance(chunk) <= 2000) {
 		if(random.nextInt(70) == 4 && canSpawn(world, x, y, z)) {
 			CommonProxy.dungeon_world_data.artifacts[artifactMetadata] = 1;
 			
@@ -104,10 +103,7 @@ public class WorldGenArtifactDungeon implements IWorldGenerator {
 			
 			// For debugging. This shouldn't be in the release build.
 			System.out.println("Artifact dungeon of type " + this.artifactMetadata + " placed at " + x + ":" + y + ":" + z + ".");
-		}
-		
-		// }		
-		
+		}		
 	}
 
 }

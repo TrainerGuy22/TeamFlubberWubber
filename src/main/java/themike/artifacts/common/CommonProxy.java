@@ -37,21 +37,14 @@ public class CommonProxy {
 			GameRegistry.registerWorldGenerator(new WorldGenArtifactDungeon(count), 70);
 		}
 	}
-	
-	@SubscribeEvent
-	public void onWorldLoad(WorldEvent.Load event) {
-		if(event.world.provider.dimensionId != 0)
-			return;
-		this.dungeon_world_data = loadWorldSaveData(event.world);
-	}
-	
+		
 	public static ArtifactDungeonSaveData loadWorldSaveData(World world) {
-		ArtifactDungeonSaveData data = (ArtifactDungeonSaveData) world.mapStorage.loadData(ArtifactDungeonSaveData.class, "artifact_dungeon");
+		ArtifactDungeonSaveData data = (ArtifactDungeonSaveData) world.perWorldStorage.loadData(ArtifactDungeonSaveData.class, "artifact_dungeon");
 		
 		if(data == null) {
 			System.out.print("Creating new save data, artifact dungeon.");
 			data = new ArtifactDungeonSaveData();
-			world.mapStorage.setData("artifact_dungeon", data);
+			world.perWorldStorage.setData("artifact_dungeon", data);
 		} else {
 			System.out.print("Found preexisting artifact dungeon.");
 		}
