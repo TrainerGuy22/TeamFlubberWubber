@@ -12,6 +12,7 @@ import themike.artifacts.blocks.tile.TileDisplayGlass;
 import themike.artifacts.entities.EntityStoneGolem;
 import themike.artifacts.items.ItemArtifact;
 import themike.artifacts.world.ArtifactDungeonSaveData;
+import themike.artifacts.world.WorldGenArtifactDungeon;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
@@ -30,6 +31,10 @@ public class CommonProxy {
 		EntityRegistry.registerModEntity(EntityStoneGolem.class, "StoneGolem", 0, Artifacts.instance, 80, 3, false);
 		GameRegistry.registerTileEntity(TileDisplayGlass.class, "display_glass");
 		MinecraftForge.EVENT_BUS.register(this);
+		
+		for(int count = 0; count != 8; count++) {
+			GameRegistry.registerWorldGenerator(new WorldGenArtifactDungeon(count), 70);
+		}
 	}
 	
 	@SubscribeEvent

@@ -2,6 +2,7 @@ package themike.artifacts.world;
 
 import java.util.Random;
 
+import themike.artifacts.blocks.tile.TileDisplayGlass;
 import themike.artifacts.common.CommonProxy;
 import themike.artifacts.util.Coord2;
 import net.minecraft.init.Blocks;
@@ -54,21 +55,41 @@ public class WorldGenArtifactDungeon implements IWorldGenerator {
 			CommonProxy.dungeon_world_data.artifacts[artifactMetadata] = 1;
 			
 			for(int countX = x - 3; countX != x + 6; countX++) {
-				for(int countZ = z - 3; countZ != z + 4; countZ++) {
-					for(int countY = y - 1; countY != y + 4; countY++) {
+				for(int countZ = z - 3; countZ != z + 3; countZ++) {
+					for(int countY = y - 1; countY != y + 3; countY++) {
 						world.setBlock(countX, countY, countZ, Blocks.air);
 					}
 					world.setBlock(countX, y - 2, countZ, Blocks.stonebrick);
+					world.setBlock(countX, y + 4, countZ, Blocks.stonebrick);
 				}
 			}
 			
 			world.setBlock(x, y, z, CommonProxy.display_glass);
+			((TileDisplayGlass) world.getTileEntity(x, y, z)).artifactMetadata = this.artifactMetadata;
+			
 			world.setBlock(x, y - 1, z, Blocks.quartz_block, 2, 3);
 			
 			world.setBlock(x - 1, y - 2, z - 1, Blocks.glowstone);
 			world.setBlock(x - 1, y - 2, z + 1, Blocks.glowstone);
 			world.setBlock(x + 1, y - 2, z - 1, Blocks.glowstone);
 			world.setBlock(x + 1, y - 2, z + 1, Blocks.glowstone);
+			
+			for(int countZ = z - 3; countZ != z + 3; countZ++) {
+				for(int countY = y - 1; countY != y + 3; countY++) {
+					world.setBlock(x - 4, countY, countZ, Blocks.stonebrick);
+					world.setBlock(x + 6, countY, countZ, Blocks.stonebrick);
+				}
+			}
+			
+			for(int countX = x - 3; countX != x + 5; countX++) {
+				for(int countY = y - 1; countY != y + 3; countY++) {
+					world.setBlock(countX, countY, z - 4, Blocks.stonebrick);
+					world.setBlock(countX, countY, z + 4, Blocks.stonebrick);
+				}
+			}
+			
+			// For debugging. This shouldn't be in the release build.
+			System.out.println("Artifact dungeon of type " + this.artifactMetadata + " placed at " + x + ":" + y + ":" + z + ".");
 		}
 		
 		// }
