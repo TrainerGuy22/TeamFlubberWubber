@@ -17,19 +17,23 @@ public class TileDisplayGlass extends TileEntity {
 	
 	public int artifactMetadata = 2;
 	public boolean isActivated;
+	public int cooldown = 0;
 	
 	public TileDisplayGlass() {
 	}
 	
 	public void updateEntity() {
-		if(isActivated) {
+		if(cooldown != 0)
+			cooldown--;
+		
+		if(isActivated && cooldown == 0) {
 			int x = this.xCoord;
 			int y = this.yCoord;
 			int z = this.zCoord;
 			
 			AxisAlignedBB range = AxisAlignedBB.getBoundingBox(x - 3, y - 1, z - 3, x + 7, y + 4, z + 4);
 			List<EntityStoneGolem> golems = this.worldObj.getEntitiesWithinAABB(EntityStoneGolem.class, range);
-			if(golems == null) {
+			if(golems.size() == 0) {
 				isActivated = false;
 				onBreak();
 			}
@@ -44,13 +48,15 @@ public class TileDisplayGlass extends TileEntity {
 			worldObj.spawnEntityInWorld(golem);
 		}
 		isActivated = true;
+		cooldown = 5;
 	}
 	
 	public void onBreak() {
+		if(worldObj.isRemote)
+			return;
+		
 		EntityItem item = new EntityItem(worldObj, xCoord + 0.5d, yCoord + 0.5d, zCoord + 0.5d, new ItemStack(CommonProxy.artifact, 1, artifactMetadata));
 		this.worldObj.spawnEntityInWorld(item);
-		
-		this.blockType.onBlockDestroyedByPlayer(worldObj, xCoord, yCoord, zCoord, this.blockMetadata);
 		this.worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.air);
 	}
 	
