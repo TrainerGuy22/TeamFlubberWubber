@@ -38,12 +38,6 @@ public class BlockDisplayGlass extends BlockGlass implements ITileEntityProvider
 	}
 	
 	@Override
-	public int onBlockPlaced(World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ, int metadata) {
-		((TileDisplayGlass) world.getTileEntity(x,  y, z)).artifactMetadata = world.rand.nextInt(8);
-		return super.onBlockPlaced(world, x, y, z, side, hitX, hitY, hitZ, metadata);
-	}
-	
-	@Override
 	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int meta) {
 		super.onBlockDestroyedByPlayer(world, x, y, z, meta);
 		this.dropBlockAsItem(world, x, y, z, new ItemStack(CommonProxy.artifact, 1, ((TileDisplayGlass) world.getTileEntity(x,  y, z)).blockMetadata));

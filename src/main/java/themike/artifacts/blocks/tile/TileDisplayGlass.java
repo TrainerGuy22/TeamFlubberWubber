@@ -10,7 +10,7 @@ import net.minecraft.util.AxisAlignedBB;
 
 public class TileDisplayGlass extends TileEntity {
 	
-	public int artifactMetadata;
+	public int artifactMetadata = 2;
 	public boolean isActivated;
 	
 	public TileDisplayGlass() {
@@ -22,7 +22,7 @@ public class TileDisplayGlass extends TileEntity {
 			int y = this.yCoord;
 			int z = this.zCoord;
 			
-			AxisAlignedBB range = AxisAlignedBB.getBoundingBox(x - 3, y - 1, z - 5, x + 6, y + 4, z + 6);
+			AxisAlignedBB range = AxisAlignedBB.getBoundingBox(x - 3, y - 1, z - 3, x + 7, y + 4, z + 4);
 			List<EntityStoneGolem> golems = this.worldObj.getEntitiesWithinAABB(EntityStoneGolem.class, range);
 			if(golems == null) {
 				isActivated = false;
