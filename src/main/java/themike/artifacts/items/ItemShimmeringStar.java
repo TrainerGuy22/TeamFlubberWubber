@@ -7,12 +7,25 @@ import themike.artifacts.common.CommonProxy;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.world.World;
 
 public class ItemShimmeringStar extends Item {
+	
+	private PotionEffect[] potions = new PotionEffect[]{
+		Potion.moveSpeed,
+		Potion.heal,
+		Potion.damageBoost,
+		Potion.jump,
+		Potion.nightVision
+	};
 	
 	public ItemShimmeringStar() {
 		super();
@@ -28,10 +41,29 @@ public class ItemShimmeringStar extends Item {
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean dunno) {
 		list.add("A radiant star, overflowing");
 		list.add("with various enchantments.");
+		list.add("Gives you various potion effects.");
 	}
 	
 	private ItemStack artifact(int meta) {
 		return new ItemStack(CommonProxy.artifact, 1, meta - 1);
 	}
+	
+	@Override
+    public void onUpdate(ItemStack stack, World world, Entity entity, int whocares1, boolean whocares2) {
+		if(!(entity instanceof EntityPlayer))
+			return;
+		if(stack.getTagCompound() == null) {
+			stack.setTagCompound(new NBTTagCompound());
+			stack.getTagCompound().setInteger("cooldown", -);
+		} else {
+			stack.getTagCompound().setInteger("cooldown", stack.getTagCompound().getInteger("cooldown") - 1);
+		}
+		if(stack.getTagCompound().getInteger("cooldown") == 0) {
+			for(Potion potion : potions) {
+			}
+			stack.getTagCompound().setInteger("cooldown", 6);
+		}
+	}
+
 
 }
