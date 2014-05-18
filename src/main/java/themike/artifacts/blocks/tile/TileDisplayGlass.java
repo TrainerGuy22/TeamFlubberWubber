@@ -59,13 +59,13 @@ public class TileDisplayGlass extends TileEntity {
 			int y = yCoord;
 			int z = zCoord;
 			
-			worldObj.setBlock(x + 7, y, z, CommonProxy.fake_air);
-			worldObj.setBlock(x + 7, y + 1, z, CommonProxy.fake_air);
-			worldObj.setBlock(x + 7, y - 1, z, CommonProxy.fake_air);
-			worldObj.setBlock(x + 7, y, z - 1, CommonProxy.fake_air);
-			worldObj.setBlock(x + 7, y - 1, z - 1, CommonProxy.fake_air);
-			worldObj.setBlock(x + 7, y, z + 1, CommonProxy.fake_air);
-			worldObj.setBlock(x + 7, y - 1, z + 1, CommonProxy.fake_air);
+			worldObj.setBlock(x - 4, y, z, CommonProxy.fake_air);
+			worldObj.setBlock(x - 4, y + 1, z, CommonProxy.fake_air);
+			worldObj.setBlock(x - 4, y - 1, z, CommonProxy.fake_air);
+			worldObj.setBlock(x - 4, y, z - 1, CommonProxy.fake_air);
+			worldObj.setBlock(x - 4, y - 1, z - 1, CommonProxy.fake_air);
+			worldObj.setBlock(x - 4, y, z + 1, CommonProxy.fake_air);
+			worldObj.setBlock(x - 4, y - 1, z + 1, CommonProxy.fake_air);
 			
 			EntityStoneGolem golem = new EntityStoneGolem(worldObj);
 			golem.setLocationAndAngles(xCoord + 5, yCoord - 1, zCoord, 0.0f, 0.0f);
@@ -128,13 +128,13 @@ public class TileDisplayGlass extends TileEntity {
 		replaceBlock(x + 7, y, z + 1, Blocks.stonebrick);
 		replaceBlock(x + 7, y - 1, z + 1, Blocks.stonebrick);
 		
-		worldObj.setBlock(x + 7, y, z, Blocks.air);
-		worldObj.setBlock(x + 7, y + 1, z, Blocks.air);
-		worldObj.setBlock(x + 7, y - 1, z, Blocks.air);
-		worldObj.setBlock(x + 7, y, z - 1, Blocks.air);
-		worldObj.setBlock(x + 7, y - 1, z - 1, Blocks.air);
-		worldObj.setBlock(x + 7, y, z + 1, Blocks.air);
-		worldObj.setBlock(x + 7, y - 1, z + 1, Blocks.air);
+		worldObj.setBlock(x - 4, y, z, Blocks.air);
+		worldObj.setBlock(x - 4, y + 1, z, Blocks.air);
+		worldObj.setBlock(x - 4, y - 1, z, Blocks.air);
+		worldObj.setBlock(x - 4, y, z - 1, Blocks.air);
+		worldObj.setBlock(x - 4, y - 1, z - 1, Blocks.air);
+		worldObj.setBlock(x - 4, y, z + 1, Blocks.air);
+		worldObj.setBlock(x - 4, y - 1, z + 1, Blocks.air);
 	}
 	
 	@Override

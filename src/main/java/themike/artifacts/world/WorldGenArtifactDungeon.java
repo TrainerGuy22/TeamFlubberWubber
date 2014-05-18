@@ -101,13 +101,13 @@ public class WorldGenArtifactDungeon implements IWorldGenerator {
 			world.setBlock(x + 7, y - 1, z + 1, CommonProxy.fake_stone, random.nextInt(3), 3);
 			
 			
-			world.setBlock(x + 7, y, z, Blocks.air);
-			world.setBlock(x + 7, y + 1, z, Blocks.air);
-			world.setBlock(x + 7, y - 1, z, Blocks.air);
-			world.setBlock(x + 7, y, z - 1, Blocks.air);
-			world.setBlock(x + 7, y - 1, z - 1, Blocks.air);
-			world.setBlock(x + 7, y, z + 1, Blocks.air);
-			world.setBlock(x + 7, y - 1, z + 1, Blocks.air);
+			world.setBlock(x - 4, y, z, Blocks.air);
+			world.setBlock(x - 4, y + 1, z, Blocks.air);
+			world.setBlock(x - 4, y - 1, z, Blocks.air);
+			world.setBlock(x - 4, y, z - 1, Blocks.air);
+			world.setBlock(x - 4, y - 1, z - 1, Blocks.air);
+			world.setBlock(x - 4, y, z + 1, Blocks.air);
+			world.setBlock(x - 4, y - 1, z + 1, Blocks.air);
 			
 			// For debugging. This shouldn't be in the release build.
 			System.out.println("Artifact dungeon of type " + this.artifactMetadata + " placed at " + x + ":" + y + ":" + z + ".");

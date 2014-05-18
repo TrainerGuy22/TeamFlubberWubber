@@ -16,7 +16,7 @@ public class BlockFakeStone extends Block {
 		super(Material.rock);
 		this.setBlockUnbreakable();
 		this.setBlockName("fake_stone");
-		this.setResistance(-1);
+		this.setResistance(6000000.0F);
 		GameRegistry.registerBlock(this, "fake_stone");
 	}
 	

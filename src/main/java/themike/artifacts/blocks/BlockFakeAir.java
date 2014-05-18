@@ -9,7 +9,7 @@ public class BlockFakeAir extends Block {
 	public BlockFakeAir() {
 		super(new MaterialFakeAir());
 		this.setBlockUnbreakable();
-		this.setResistance(-1);
+		this.setResistance(6000000.0F);
 		GameRegistry.registerBlock(this, "fake_air");	
 	}
 

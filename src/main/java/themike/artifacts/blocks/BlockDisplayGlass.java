@@ -24,7 +24,7 @@ public class BlockDisplayGlass extends BlockContainer {
 
 	public BlockDisplayGlass() {
 		super(Material.ice);
-		this.setResistance(-1);
+		this.setResistance(6000000.0F);
 		this.setHardness(-1);
 		this.setCreativeTab(Artifacts.creative_tab);
 		this.setBlockName("display_glass");
