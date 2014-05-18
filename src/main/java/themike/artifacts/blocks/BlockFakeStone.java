@@ -20,6 +20,7 @@ public class BlockFakeStone extends Block {
 		GameRegistry.registerBlock(this, "fake_stone");
 	}
 	
+	@Override
 	public int getLightValue(IBlockAccess world, int x, int y, int z) {
 		if(world.getBlockMetadata(x, y, z) == 3) 
 			return 15;
@@ -27,6 +28,8 @@ public class BlockFakeStone extends Block {
 			return 0;
 	}
 	
+	@Override
+	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta) {
 		if(meta == 3)
 			return Blocks.glowstone.getIcon(side, meta);

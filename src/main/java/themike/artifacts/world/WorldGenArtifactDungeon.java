@@ -4,7 +4,6 @@ import java.util.Random;
 
 import themike.artifacts.blocks.tile.TileDisplayGlass;
 import themike.artifacts.common.CommonProxy;
-import themike.artifacts.util.Coord2;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;

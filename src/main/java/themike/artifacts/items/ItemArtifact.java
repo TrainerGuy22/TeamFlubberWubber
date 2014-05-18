@@ -25,11 +25,13 @@ public class ItemArtifact extends Item {
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister renderer) {
 		this.itemIcon = renderer.registerIcon("artifacts:artifact");
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean dunno) {
 		// Geeky reference. Carry on.
 		list.add("A rare artifact, from");
