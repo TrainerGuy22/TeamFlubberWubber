@@ -64,8 +64,8 @@ public class TileDisplayGlass extends TileEntity {
 		cooldown = 5;
 	}
 	
-	private void replaceBlock(World world, int x, int y, int z, Block replacement) {
-		world.setBlock(x, y, z, replacement, world.getBlockMetadata(x, y, z), 3);
+	private void replaceBlock(int x, int y, int z, Block replacement) {
+		worldObj.setBlock(x, y, z, replacement, worldObj.getBlockMetadata(x, y, z), 3);
 	}
 	
 	public void onBreak() {
@@ -75,42 +75,56 @@ public class TileDisplayGlass extends TileEntity {
 		EntityItem item = new EntityItem(worldObj, xCoord + 0.5d, yCoord + 0.5d, zCoord + 0.5d, new ItemStack(CommonProxy.artifact, 1, artifactMetadata));
 		this.worldObj.spawnEntityInWorld(item);
 		this.worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.air);
-				
+		
+		int x = xCoord;
+		int y = yCoord;
+		int z = zCoord;
+		
 		for(int countX = xCoord - 3; countX != xCoord + 6; countX++) {
 			for(int countZ = zCoord - 3; countZ != zCoord + 4; countZ++) {
-				worldObj.setBlock(countX, y - 2, countZ, CommonProxy.fake_stone, random.nextInt(3), 3);
-				worldObj.setBlock(countX, y + 4, countZ, CommonProxy.fake_stone, random.nextInt(3), 3);
+				replaceBlock(countX, yCoord - 2, countZ, Blocks.stonebrick);
+				replaceBlock(countX, yCoord + 4, countZ, Blocks.stonebrick);
 			}
 		}		
 		
+		/*
 		worldObj.setBlock(x - 1, y - 2, z - 1, Blocks.glowstone, 0, 1);
 		worldObj.setBlock(x - 1, y - 2, z + 1, Blocks.glowstone, 0, 1);
 		worldObj.setBlock(x + 1, y - 2, z - 1, Blocks.glowstone, 0, 1);
 		worldObj.setBlock(x + 1, y - 2, z + 1, Blocks.glowstone, 0, 1);
+		*/
 		
 		for(int countZ = z - 3; countZ != z + 4; countZ++) {
 			for(int countY = y - 1; countY != y + 4; countY++) {
-				worldObj.setBlock(x - 4, countY, countZ, CommonProxy.fake_stone, random.nextInt(3), 3);
-				worldObj.setBlock(x + 6, countY, countZ, CommonProxy.fake_stone, random.nextInt(3), 3);
+				replaceBlock(x - 4, countY, countZ, Blocks.stonebrick);
+				replaceBlock(x + 6, countY, countZ, Blocks.stonebrick);
 			}
 		}
 		
 		for(int countX = x - 3; countX != x + 6; countX++) {
 			for(int countY = y - 1; countY != y + 4; countY++) {
-				worldObj.setBlock(countX, countY, z - 4, CommonProxy.fake_stone, random.nextInt(3), 3);
-				worldObj.setBlock(countX, countY, z + 4, CommonProxy.fake_stone, random.nextInt(3), 3);
+				replaceBlock(countX, countY, z - 4, Blocks.stonebrick);
+				replaceBlock(countX, countY, z + 4, Blocks.stonebrick);
 			}
 		}
 		
-		worldObj.setBlock(x + 7, y, z, Blocks.glowstone, 0, 1);
-		worldObj.setBlock(x + 7, y + 1, z, CommonProxy.fake_stone, random.nextInt(3), 3);
-		worldObj.setBlock(x + 7, y - 1, z, Blocks.glowstone, 0, 1);
+		// worldObj.setBlock(x + 7, y, z, Blocks.glowstone, 0, 1);
+		replaceBlock(x + 7, y + 1, z, Blocks.stonebrick);
+		// worldObj.setBlock(x + 7, y - 1, z, Blocks.glowstone, 0, 1);
 		
-		worldObj.setBlock(x + 7, y, z - 1, CommonProxy.fake_stone, random.nextInt(3), 3);
-		worldObj.setBlock(x + 7, y - 1, z - 1, CommonProxy.fake_stone, random.nextInt(3), 3);
+		replaceBlock(x + 7, y, z - 1, Blocks.stonebrick);
+		replaceBlock(x + 7, y - 1, z - 1, Blocks.stonebrick);
 		
-		worldObj.setBlock(x + 7, y, z + 1, CommonProxy.fake_stone, random.nextInt(3), 3);
-		worldObj.setBlock(x + 7, y - 1, z + 1, CommonProxy.fake_stone, random.nextInt(3), 3);
+		replaceBlock(x + 7, y, z + 1, Blocks.stonebrick);
+		replaceBlock(x + 7, y - 1, z + 1, Blocks.stonebrick);
+		
+		worldObj.setBlock(x + 7, y, z, Blocks.air);
+		worldObj.setBlock(x + 7, y + 1, z, Blocks.air);
+		worldObj.setBlock(x + 7, y - 1, z, Blocks.air);
+		worldObj.setBlock(x + 7, y, z - 1, Blocks.air);
+		worldObj.setBlock(x + 7, y - 1, z - 1, Blocks.air);
+		worldObj.setBlock(x + 7, y, z + 1, Blocks.air);
+		worldObj.setBlock(x + 7, y - 1, z + 1, Blocks.air);
 	}
 	
 	@Override

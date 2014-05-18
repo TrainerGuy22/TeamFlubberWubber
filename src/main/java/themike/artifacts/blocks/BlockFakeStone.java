@@ -12,7 +12,7 @@ import net.minecraft.util.IIcon;
 public class BlockFakeStone extends Block {
 	
 	public BlockFakeStone() {
-		super(Material.air);
+		super(Material.rock);
 		this.setBlockUnbreakable();
 		this.setBlockName("fake_stone");
 		this.setResistance(-1);
