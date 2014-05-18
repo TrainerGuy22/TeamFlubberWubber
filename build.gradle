@@ -1,0 +1,50 @@
+/*
+
+ForgeGradle building for Artifacts! This script is meant to be a easy way to build the mod, as well as example for implementing ForgeGradle in your own mods.
+
+How to use:
+
+1. Make sure you have Gradle installed (http://www.gradle.org/).
+2. Open up Terminal (Unix) or cmd (Windows).
+3. Navigate to the mod's main folder.
+4. './gradlew setupCIWorkspace'
+5. './gradlew build'
+6. Enjoy!
+
+*/
+
+// This simple grabs the latest 'forge' plugin, or ForgeGradle, from Forge's servers.
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+    }
+}
+
+// We apply the 'forge' plugin, so ForgeGradle can do it's stuff.
+apply plugin: 'forge'
+
+group = 'themike.artifacts' // Your main package.
+version = "1.0.0"
+archivesBaseName = 'Artifacts'
+
+minecraft {
+	version = "1.7.2-10.12.1.1082"
+}
+
+processResources
+{
+
+    // Copy everything else that wasn't replaced.
+    from(sourceSets.main.resources.srcDirs) {}
+}
