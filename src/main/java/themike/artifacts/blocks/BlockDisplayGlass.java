@@ -48,6 +48,8 @@ public class BlockDisplayGlass extends BlockContainer {
 	@Override
 	@SideOnly(Side.CLIENT)
     public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side) {
+		if(side == 0)
+			return false;
 		return true;
 	}
 

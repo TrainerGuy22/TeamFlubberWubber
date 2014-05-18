@@ -21,9 +21,14 @@ public class BlockFakeAir extends Block {
 	
 	@Override
 	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB mask, List list, Entity entity) {
-		if(x + 1 < entity.posX && entity.prevPosX > entity.posX)
+		if(x + 1 < entity.posX && entity.lastTickPosX > x + 1)
 			super.addCollisionBoxesToList(world, x, y, z, mask, list, entity);
 	}
+	
+	@Override
+    public boolean isOpaqueCube() {
+        return false;
+    }
 	
 	@Override
     public int getRenderType() {

@@ -33,7 +33,7 @@ public class TileDisplayGlass extends TileEntity {
 			int y = this.yCoord;
 			int z = this.zCoord;
 			
-			AxisAlignedBB range = AxisAlignedBB.getBoundingBox(x - 4, y - 2, z - 4, x + 8, y + 5, z + 5);
+			AxisAlignedBB range = AxisAlignedBB.getBoundingBox(x - 4, y - 2, z - 5, x + 8, y + 5, z + 6);
 			List<EntityStoneGolem> golems = this.worldObj.getEntitiesWithinAABB(EntityStoneGolem.class, range);
 			if(golems.size() == 0) {
 				isActivated = false;
