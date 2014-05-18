@@ -15,6 +15,7 @@ import themike.artifacts.world.ArtifactDungeonSaveData;
 import themike.artifacts.world.WorldGenArtifactDungeon;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.WorldEvent;
 
@@ -39,11 +40,15 @@ public class CommonProxy {
 	
 	@SubscribeEvent
 	public void onWorldLoad(WorldEvent.Load event) {
-		ArtifactDungeonSaveData data = (ArtifactDungeonSaveData) event.world.mapStorage.loadData(ArtifactDungeonSaveData.class, "artifact_dungeon");
+		loadWorldSaveData(event.world);
+	}
+	
+	public static void loadWorldSaveData(World world) {
+		ArtifactDungeonSaveData data = (ArtifactDungeonSaveData) world.mapStorage.loadData(ArtifactDungeonSaveData.class, "artifact_dungeon");
 		
 		if(data == null) {
 			data = new ArtifactDungeonSaveData();
-			event.world.mapStorage.setData("artifact_dungeon", data);
+			world.mapStorage.setData("artifact_dungeon", data);
 		}
 		
 		dungeon_world_data = data;

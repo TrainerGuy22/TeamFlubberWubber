@@ -20,6 +20,8 @@ public class WorldGenArtifactDungeon implements IWorldGenerator {
 	}
 	
 	public boolean canSpawn(World world, int x, int y, int z) {
+		if(CommonProxy.dungeon_world_data == null)
+			CommonProxy.loadWorldSaveData(world);
 		if(CommonProxy.dungeon_world_data.artifacts[artifactMetadata] == 1)
 			return false;
 		if(world.getBlock(x + 6, y - 2, z - 3).isAir(world, x + 6, y - 2, z - 3) ||
@@ -56,7 +58,7 @@ public class WorldGenArtifactDungeon implements IWorldGenerator {
 			
 			for(int countX = x - 3; countX != x + 6; countX++) {
 				for(int countZ = z - 3; countZ != z + 3; countZ++) {
-					for(int countY = y - 1; countY != y + 3; countY++) {
+					for(int countY = y - 1; countY != y + 4; countY++) {
 						world.setBlock(countX, countY, countZ, Blocks.air);
 					}
 					world.setBlock(countX, y - 2, countZ, Blocks.stonebrick);
@@ -74,14 +76,14 @@ public class WorldGenArtifactDungeon implements IWorldGenerator {
 			world.setBlock(x + 1, y - 2, z - 1, Blocks.glowstone);
 			world.setBlock(x + 1, y - 2, z + 1, Blocks.glowstone);
 			
-			for(int countZ = z - 3; countZ != z + 3; countZ++) {
+			for(int countZ = z - 3; countZ != z + 4; countZ++) {
 				for(int countY = y - 1; countY != y + 3; countY++) {
 					world.setBlock(x - 4, countY, countZ, Blocks.stonebrick);
 					world.setBlock(x + 6, countY, countZ, Blocks.stonebrick);
 				}
 			}
 			
-			for(int countX = x - 3; countX != x + 5; countX++) {
+			for(int countX = x - 3; countX != x + 6; countX++) {
 				for(int countY = y - 1; countY != y + 3; countY++) {
 					world.setBlock(countX, countY, z - 4, Blocks.stonebrick);
 					world.setBlock(countX, countY, z + 4, Blocks.stonebrick);
@@ -92,9 +94,7 @@ public class WorldGenArtifactDungeon implements IWorldGenerator {
 			System.out.println("Artifact dungeon of type " + this.artifactMetadata + " placed at " + x + ":" + y + ":" + z + ".");
 		}
 		
-		// }
-		
-		
+		// }		
 		
 	}
 

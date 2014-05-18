@@ -5,7 +5,7 @@ import net.minecraft.world.WorldSavedData;
 
 public class ArtifactDungeonSaveData extends WorldSavedData {
 	
-	public Integer[] artifacts = new Integer[8];
+	public Integer[] artifacts = new Integer[]{0,0,0,0,0,0,0,0};
 
 	public ArtifactDungeonSaveData() {
 		super("artifact_dungeon");
