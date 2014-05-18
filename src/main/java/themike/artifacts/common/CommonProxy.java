@@ -40,10 +40,12 @@ public class CommonProxy {
 	
 	@SubscribeEvent
 	public void onWorldLoad(WorldEvent.Load event) {
-		loadWorldSaveData(event.world);
+		if(event.world.provider.dimensionId != 0)
+			return;
+		this.dungeon_world_data = loadWorldSaveData(event.world);
 	}
 	
-	public static void loadWorldSaveData(World world) {
+	public static ArtifactDungeonSaveData loadWorldSaveData(World world) {
 		ArtifactDungeonSaveData data = (ArtifactDungeonSaveData) world.mapStorage.loadData(ArtifactDungeonSaveData.class, "artifact_dungeon");
 		
 		if(data == null) {
@@ -54,7 +56,7 @@ public class CommonProxy {
 			System.out.print("Found preexisting artifact dungeon.");
 		}
 		
-		dungeon_world_data = data;
+		return data;
 	}
 
 }

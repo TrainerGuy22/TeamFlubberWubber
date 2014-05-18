@@ -20,8 +20,6 @@ public class WorldGenArtifactDungeon implements IWorldGenerator {
 	}
 	
 	public boolean canSpawn(World world, int x, int y, int z) {
-		if(CommonProxy.dungeon_world_data == null)
-			CommonProxy.loadWorldSaveData(world);
 		if(CommonProxy.dungeon_world_data.artifacts[artifactMetadata] == 1)
 			return false;
 		if(world.getBlock(x + 6, y - 2, z - 3).isAir(world, x + 6, y - 2, z - 3) ||
@@ -39,12 +37,12 @@ public class WorldGenArtifactDungeon implements IWorldGenerator {
 
 	@Override
 	public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkProvider generator, IChunkProvider provider) {
-		// Stupid not random Random.
-		Random random = new Random();
-		
 		if(world.provider.dimensionId != 0) {
 			return;
 		}
+		
+		// Stupid not random Random.
+		Random random = new Random();
 		
 		ChunkCoordinates spawnCoords = world.getSpawnPoint();
 		
@@ -56,7 +54,7 @@ public class WorldGenArtifactDungeon implements IWorldGenerator {
 		Coord2 chunk = new Coord2(chunkX * 16, chunkZ * 16);
 		
 		// if(spawn.distance(chunk) <= 2000) {
-		if(random.nextInt(60) == 4 && canSpawn(world, x, y, z)) {
+		if(random.nextInt(70) == 4 && canSpawn(world, x, y, z)) {
 			CommonProxy.dungeon_world_data.artifacts[artifactMetadata] = 1;
 			
 			for(int countX = x - 3; countX != x + 6; countX++) {
@@ -92,6 +90,17 @@ public class WorldGenArtifactDungeon implements IWorldGenerator {
 					world.setBlock(countX, countY, z + 4, Blocks.stonebrick);
 				}
 			}
+			
+			world.setBlock(x + 7, y, z, Blocks.glowstone);
+			world.setBlock(x + 7, y + 1, z, Blocks.stonebrick);
+			world.setBlock(x + 7, y - 1, z, Blocks.glowstone);
+			
+			world.setBlock(x + 7, y, z - 1, Blocks.stonebrick);
+			world.setBlock(x + 7, y - 1, z - 1, Blocks.stonebrick);
+			
+			world.setBlock(x + 7, y, z + 1, Blocks.stonebrick);
+			world.setBlock(x + 7, y - 1, z + 1, Blocks.stonebrick);
+			
 			
 			// For debugging. This shouldn't be in the release build.
 			System.out.println("Artifact dungeon of type " + this.artifactMetadata + " placed at " + x + ":" + y + ":" + z + ".");
