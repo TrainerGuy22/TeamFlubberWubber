@@ -1,6 +1,7 @@
 package themike.artifacts;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.common.config.Configuration;
 import themike.artifacts.common.CommonProxy;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -14,6 +15,8 @@ public class Artifacts {
 	@Instance("artifacts")
 	public static Artifacts instance;
 	
+	public static boolean debug = false;
+	
 	@SidedProxy(clientSide = "themike.artifacts.client.ClientProxy", serverSide = "themike.artifacts.common.CommonProxy")
 	public static CommonProxy proxy;
 	
@@ -21,6 +24,11 @@ public class Artifacts {
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
+		config.load();
+		debug = config.get("misc", "debug", false).getBoolean(false);
+		config.save();
+		
 		proxy.init();
 	}
 	

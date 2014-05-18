@@ -2,6 +2,7 @@ package themike.artifacts.world;
 
 import java.util.Random;
 
+import themike.artifacts.Artifacts;
 import themike.artifacts.blocks.tile.TileDisplayGlass;
 import themike.artifacts.common.CommonProxy;
 import net.minecraft.init.Blocks;
@@ -109,6 +110,9 @@ public class WorldGenArtifactDungeon implements IWorldGenerator {
 			world.setBlock(x - 4, y - 1, z - 1, Blocks.air);
 			world.setBlock(x - 4, y, z + 1, Blocks.air);
 			world.setBlock(x - 4, y - 1, z + 1, Blocks.air);
+			
+			if(Artifacts.debug)
+				System.out.println("Artifact Dungeon with Artifact " + this.artifactMetadata + " Coords:" + x + ":" + y + ":" + z);
 		}		
 	}
 
