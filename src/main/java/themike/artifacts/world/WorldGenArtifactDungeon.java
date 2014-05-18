@@ -45,9 +45,7 @@ public class WorldGenArtifactDungeon implements IWorldGenerator {
 		
 		// Stupid not random Random.
 		Random random = new Random();
-		
-		ChunkCoordinates spawnCoords = world.getSpawnPoint();
-		
+				
 		int x = chunkX * 16 + random.nextInt(16);
 		int z = chunkZ * 16 + random.nextInt(16);
 		int y = 10 + random.nextInt(7);

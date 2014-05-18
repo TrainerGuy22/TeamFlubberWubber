@@ -37,7 +37,6 @@ public class CommonProxy {
 		fake_air = new BlockFakeAir();
 		EntityRegistry.registerModEntity(EntityStoneGolem.class, "StoneGolem", 0, Artifacts.instance, 80, 3, false);
 		GameRegistry.registerTileEntity(TileDisplayGlass.class, "display_glass");
-		MinecraftForge.EVENT_BUS.register(this);
 		
 		for(int count = 0; count != 8; count++) {
 			GameRegistry.registerWorldGenerator(new WorldGenArtifactDungeon(count), 70);

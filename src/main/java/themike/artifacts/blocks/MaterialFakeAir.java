@@ -13,5 +13,10 @@ public class MaterialFakeAir extends MaterialTransparent {
 	public boolean isReplaceable() {
 		return false;
 	}
+	
+	@Override
+    public boolean isSolid() {
+        return true;
+    }
 
 }
