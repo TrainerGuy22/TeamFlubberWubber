@@ -42,8 +42,19 @@ public class TileDisplayGlass extends TileEntity {
 	
 	public void onActivated() {
 		if(!isActivated && !worldObj.isRemote) {
+			
+			worldObj.setBlock(xCoord + 6, yCoord, zCoord, Blocks.air);
+			worldObj.setBlock(xCoord + 6, yCoord + 1, zCoord, Blocks.air);
+			worldObj.setBlock(xCoord + 6, yCoord - 1, zCoord, Blocks.air);
+			
+			worldObj.setBlock(xCoord + 6, yCoord, zCoord - 1, Blocks.air);
+			worldObj.setBlock(xCoord + 6, yCoord - 1, zCoord - 1, Blocks.air);
+			
+			worldObj.setBlock(xCoord + 6, yCoord, zCoord + 1, Blocks.air);
+			worldObj.setBlock(xCoord + 6, yCoord - 1, zCoord + 1, Blocks.air);
+			
 			EntityStoneGolem golem = new EntityStoneGolem(worldObj);
-			golem.setLocationAndAngles(xCoord, yCoord + 1, zCoord, 0.0f, 0.0f);
+			golem.setLocationAndAngles(xCoord + 5, yCoord - 1, zCoord, 0.0f, 0.0f);
 			((EntityLiving) golem).onSpawnWithEgg((IEntityLivingData) null);
 			worldObj.spawnEntityInWorld(golem);
 		}
